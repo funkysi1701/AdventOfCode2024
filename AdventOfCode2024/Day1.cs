@@ -33,7 +33,7 @@ public static class Day1
         string? line;
         leftList = new List<int>();
         rightList = new List<int>();
-        StreamReader sr = new StreamReader("input.txt");
+        StreamReader sr = new StreamReader("input1.txt");
         line = sr.ReadLine();
         while (line != null)
         {

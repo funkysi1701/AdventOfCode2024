@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode2024;
 
-public class Day2
+public static class Day2
 {
     public static int SolvePart1()
     {
@@ -40,7 +40,7 @@ public class Day2
         string? line;
 
         var listoflists = new List<List<int>>();
-        StreamReader sr = new StreamReader("input.txt");
+        StreamReader sr = new StreamReader("input2.txt");
         line = sr.ReadLine();
         while (line != null)
         {
