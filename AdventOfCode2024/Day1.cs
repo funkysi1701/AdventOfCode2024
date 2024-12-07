@@ -30,7 +30,7 @@ public static class Day1
 
     private static void LoadData(out List<int> leftList, out List<int> rightList)
     {
-        string line;
+        string? line;
         leftList = new List<int>();
         rightList = new List<int>();
         StreamReader sr = new StreamReader("input.txt");

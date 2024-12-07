@@ -17,14 +17,14 @@ public class Day2
                 {
                     var diff = list[i] - list[i + 1];
                     diff = diff < 0 ? diff * -1 : diff;
-                    if (diff < 1 || diff > 3 || diff == 0)
+                    if (diff < 1 || diff > 3)
                     {
                         result.Add(false);
                         rowResult = true;
                         break;
                     }
                 }
-                if(!rowResult)
+                if (!rowResult)
                     result.Add(true);
             }
             else
@@ -32,12 +32,12 @@ public class Day2
                 result.Add(false);
             }
         }
-        return result.Where(x => x == true).Count();
+        return result.Count(x => x);
     }
 
     private static List<List<int>> LoadData()
     {
-        string line;
+        string? line;
 
         var listoflists = new List<List<int>>();
         StreamReader sr = new StreamReader("input.txt");
