@@ -17,5 +17,13 @@
 
             Assert.Equal(31, result);
         }
+
+        [Fact]
+        public void Day2Part1Example()
+        {
+            var result = Day2.SolvePart1();
+
+            Assert.Equal(2, result);
+        }
     }
 }
