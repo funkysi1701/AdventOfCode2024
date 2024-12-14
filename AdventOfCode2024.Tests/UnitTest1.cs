@@ -32,5 +32,20 @@
             var result = Day2.SolvePart2();
             Assert.Equal(4, result);
         }
+
+        [Fact]
+        public void Day3Part1Example()
+        {
+            var result = Day3.SolvePart1();
+
+            Assert.Equal(161, result);
+        }
+
+        [Fact]
+        public void Day3Part2Example()
+        {
+            var result = Day3.SolvePart2();
+            Assert.Equal(48, result);
+        }
     }
 }
