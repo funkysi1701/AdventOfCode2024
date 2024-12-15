@@ -181,7 +181,7 @@ public static class Day4
     {
         string? line;
         List<string>? listoflists = new();
-        StreamReader sr = new StreamReader("input4.txt");
+        using StreamReader sr = new StreamReader("input4.txt");
         line = sr.ReadLine();
         while (line != null)
         {
