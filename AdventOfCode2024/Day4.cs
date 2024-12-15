@@ -2,12 +2,74 @@
 
 public static class Day4
 {
-    public static int SolvePart1()
+    public static int SolvePart2()
+    {
+        var arrayOfLetters = GetArray();
+        var x = GetX();
+        var y = GetY();
+        var count = 0;
+        for (int i = 1; i < x - 1; i++)
+        {
+            for (int j = 1; j < y - 1; j++)
+            {
+                if (arrayOfLetters[i, j] == "A")
+                {
+                    if (arrayOfLetters[i - 1, j - 1] == "M"
+                        && arrayOfLetters[i - 1, j + 1] == "M"
+                        && arrayOfLetters[i + 1, j + 1] == "S"
+                        && arrayOfLetters[i + 1, j - 1] == "S")
+                    {
+                        count++;
+                    }
+
+                    if (arrayOfLetters[i - 1, j - 1] == "S"
+                        && arrayOfLetters[i - 1, j + 1] == "M"
+                        && arrayOfLetters[i + 1, j + 1] == "M"
+                        && arrayOfLetters[i + 1, j - 1] == "S")
+                    {
+                        count++;
+                    }
+
+                    if (arrayOfLetters[i - 1, j - 1] == "S"
+                        && arrayOfLetters[i - 1, j + 1] == "S"
+                        && arrayOfLetters[i + 1, j + 1] == "M"
+                        && arrayOfLetters[i + 1, j - 1] == "M")
+                    {
+                        count++;
+                    }
+
+                    if (arrayOfLetters[i - 1, j - 1] == "M"
+                        && arrayOfLetters[i - 1, j + 1] == "S"
+                        && arrayOfLetters[i + 1, j + 1] == "S"
+                        && arrayOfLetters[i + 1, j - 1] == "M")
+                    {
+                        count++;
+                    }
+                }
+            }
+        }
+
+        return count;
+    }
+
+    public static int GetX()
+    {
+        var allHRows = LoadData();
+        return allHRows.Count;
+    }
+
+    public static int GetY()
+    {
+        var allHRows = LoadData();
+        return allHRows[0].Length;
+    }
+
+    private static string[,] GetArray()
     {
         var allHRows = LoadData();
         var x = allHRows.Count;
         var y = allHRows[0].Length;
-        var count = 0;
+
         string[,] arrayOfLetters = new string[x, y];
         for (int i = 0; i < x; i++)
         {
@@ -16,6 +78,16 @@ public static class Day4
                 arrayOfLetters[i, j] = allHRows[i].Substring(j, 1);
             }
         }
+
+        return arrayOfLetters;
+    }
+
+    public static int SolvePart1()
+    {
+        var arrayOfLetters = GetArray();
+        var x = GetX();
+        var y = GetY();
+        var count = 0;
         for (int i = 0; i < x; i++)
         {
             for (int j = 0; j < y - 3; j++)

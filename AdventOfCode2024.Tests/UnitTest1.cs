@@ -56,11 +56,11 @@
             Assert.Equal(18, result);
         }
 
-        //[Fact]
-        //public void Day4Part2Example()
-        //{
-        //    var result = Day3.SolvePart2();
-        //    Assert.Equal(48, result);
-        //}
+        [Fact]
+        public void Day4Part2Example()
+        {
+            var result = Day4.SolvePart2();
+            Assert.Equal(9, result);
+        }
     }
 }
