@@ -34,12 +34,9 @@ public class Day5
         foreach (var rule in rules)
         {
             var parts = rule.Split("|");
-            if (pageSet.Contains(parts[0]) && pageSet.Contains(parts[1]))
+            if (pageSet.Contains(parts[0]) && pageSet.Contains(parts[1]) && pageIndex[parts[0]] > pageIndex[parts[1]])
             {
-                if (pageIndex[parts[0]] > pageIndex[parts[1]])
-                {
-                    return false;
-                }
+                return false;
             }
         }
 
@@ -56,11 +53,13 @@ public class Day5
             var parts = rule.Split("|");
             if (pageSet.Contains(parts[0]) && pageSet.Contains(parts[1]))
             {
-                if (!dependencies.ContainsKey(parts[1]))
+                if (!dependencies.TryGetValue(parts[1], out List<string>? value))
                 {
-                    dependencies[parts[1]] = new List<string>();
+                    value = [];
+                    dependencies[parts[1]] = value;
                 }
-                dependencies[parts[1]].Add(parts[0]);
+
+                value.Add(parts[0]);
             }
         }
 
@@ -73,17 +72,17 @@ public class Day5
         }
 
         sortedPages.Reverse();
-        return sortedPages.ToArray();
+        return [.. sortedPages];
     }
 
-    private void TopologicalSort(string page, Dictionary<string, List<string>> dependencies, HashSet<string> visited, List<string> sortedPages)
+    private static void TopologicalSort(string page, Dictionary<string, List<string>> dependencies, HashSet<string> visited, List<string> sortedPages)
     {
         if (!visited.Contains(page))
         {
             visited.Add(page);
-            if (dependencies.ContainsKey(page))
+            if (dependencies.TryGetValue(page, out List<string>? value))
             {
-                foreach (var dep in dependencies[page])
+                foreach (var dep in value)
                 {
                     TopologicalSort(dep, dependencies, visited, sortedPages);
                 }
