@@ -62,5 +62,22 @@
             var result = Day4.SolvePart2();
             Assert.Equal(9, result);
         }
+
+        [Fact]
+        public void Day5Part1Example()
+        {
+            var day = new Day5();
+            var result = day.SolvePart1();
+
+            Assert.Equal(143, result);
+        }
+
+        [Fact]
+        public void Day5Part2Example()
+        {
+            var day = new Day5();
+            var result = day.SolvePart2();
+            Assert.Equal(123, result);
+        }
     }
 }
